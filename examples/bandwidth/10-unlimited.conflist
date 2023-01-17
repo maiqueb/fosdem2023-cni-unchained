@@ -1,0 +1,15 @@
+{
+  "cniVersion": "0.4.0",
+  "name": "unlimitedbandwidth",
+  "plugins": [
+    {
+        "type": "bridge",
+        "bridge": "mynet0",
+        "isDefaultGateway": true,
+        "capabilities": { "ips": true },
+        "ipam": {
+            "type": "static"
+        }
+    }
+  ]
+}

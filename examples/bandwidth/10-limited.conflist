@@ -1,0 +1,19 @@
+{
+  "cniVersion": "0.4.0",
+  "name": "bandwidthlimiter",
+  "plugins": [
+    {
+        "type": "bridge",
+        "bridge": "mynet0",
+        "isDefaultGateway": true,
+        "capabilities": { "ips": true },
+        "ipam": {
+            "type": "static"
+        }
+    }, {
+        "type": "bandwidth",
+        "ingressRate": 500000,
+        "ingressBurst": 50000
+    }
+  ]
+}

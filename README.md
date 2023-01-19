@@ -26,20 +26,36 @@ bridge.
 ```
 
 We will use two different CNI configurations, to show how the bandwidth CNI
-complements the functionality of the `bridge-cni` plugin with traffic shaping.
+complements the functionality of the
+[bridge CNI](https://www.cni.dev/plugins/current/main/bridge/) plugin with
+traffic shaping.
 These configurations are:
 - [unlimitedbandwidth](examples/bandwidth/10-unlimited.conflist): no traffic shaping
 - [bandwidthlimiter](examples/bandwidth/10-limited.conflist): sets up an ingress rate & burst limiter
 
+#### Requirements
+This demo requires the following software installed in your system:
+- [golang](https://go.dev/doc/install)
+- iperf3
+
+Run the following script to build the
+[reference CNI plugins](https://github.com/f1-outsourcing/plugins/blob/master/plugins/)
+along with
+[cnitool](https://github.com/containernetworking/cni/tree/main/cnitool):
+```bash
+./setup_dependencies.sh
+```
+
+#### Demo steps
+
 To execute the demo for the first part of the scenario (unlimited throughput):
 ```bash
-NETCONFPATH=examples/bandwidth demo-scenarios/bandwidth-example.sh unlimitedbandwidth
+demo-scenarios/bandwidth-example.sh unlimitedbandwidth
 ```
 
 To execute the demo for the second part of the scenario (bandwidth plugin
 configures traffic shaping):
 ```bash
-NETCONFPATH=examples/bandwidth demo-scenarios/bandwidth-example.sh bandwidthlimiter
+demo-scenarios/bandwidth-example.sh bandwidthlimiter
 ```
 
-**NOTE:** please ensure `cnitool` is in your PATH

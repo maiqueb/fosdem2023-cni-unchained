@@ -36,4 +36,3 @@ sudo NETCONFPATH=$(echo $NETCONFPATH) \
     CNI_CONTAINERID=$(uuidgen) \
     $CNITOOL_BINARY add $bandwidth_net_name "/var/run/netns/client"
 sudo ip netns exec client iperf3 -c "$serverIP" -p 9000
-

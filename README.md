@@ -67,3 +67,41 @@ configures traffic shaping):
 ```bash
 demo-scenarios/bandwidth-example.sh bandwidthlimiter
 ```
+
+### Debug-cni
+
+This
+[chained CNI plugin](https://github.com/containernetworking/cni/blob/main/SPEC.md#overview-1)
+does one thing: it prints the result of the previous plugin in the chain; it is
+helpful for debugging purposes, allowing the user to inspect a step-by-step
+result of each plugin in the chain, thus helping to realize where in the chain
+did things go wrong.
+
+This demo scenario is composed of a single net namespace, interconnected by a
+linux bridge.
+
+```
+
+                         ┌──────────┐
+                         │          │
+             ┌──────────►│  mybr0   │
+             │           │          │
+             │           └──────────┘
+    ┌────────┴────────┐
+    │                 │
+    │   dummy netns   │
+    └─────────────────┘
+```
+
+We will use a
+[single chained configuration](https://github.com/maiqueb/fosdem2023-cni-unchained/blob/main/examples/20-debug-cni.conflist)
+to create the aforementioned scenario, after which we'll print the result from the bridge plugin, then
+use the tuning-cni plugin to mutate the sandbox interface MAC address.
+
+#### Demo steps
+
+To execute the demo:
+
+```bash
+demo-scenarios/debug-cni.sh debug-bridge-config
+```

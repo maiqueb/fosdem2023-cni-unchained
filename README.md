@@ -34,8 +34,8 @@ complements the functionality of the
 traffic shaping.
 These configurations are:
 
-- [unlimitedbandwidth](examples/bandwidth/10-unlimited.conflist): no traffic shaping
-- [bandwidthlimiter](examples/bandwidth/10-limited.conflist): sets up an ingress rate & burst limiter
+- [unlimitedbandwidth](examples/10-unlimited.conflist): no traffic shaping
+- [bandwidthlimiter](examples/10-limited.conflist): sets up an ingress rate & burst limiter
 
 #### Requirements
 
